@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import {Switch, Route} from 'react-router-dom';
 import axios from 'axios';
 import * as yup from 'yup';
 import './App.css';
@@ -7,7 +7,7 @@ import PizzaForm from './components/Form'
 import Home from './components/Homepage';
 import Nav from './components/Navigation';
 import schema from './validation/formSchema';
-import { ValidationError } from 'yup';
+
 
 const initialFormValues = {
   name: '',
@@ -55,15 +55,6 @@ const App = () => {
     })
   }
   
-  const onSubmit = () => {
-    const morePizza = {
-      name: formValues.name.trim(),
-      size: formValues.size.trim(),
-      sauce: formValues.sauce.trim(),
-      toppings: ['pepperoni', 'sausage', 'onion', 'mushroom'].filter(topping => formValues[topping])
-    }
-    postPizza(morePizza)
-  }
 
   const validate = (name, value) => {
     yup.reach(schema, name).validate(value)
@@ -76,8 +67,18 @@ const App = () => {
     setFormValues({...formValues, [name]:value})
   }
 
+  const onSubmit = () => {
+    const morePizza = {
+      name: formValues.name.trim(),
+      size: formValues.size.trim(),
+      sauce: formValues.sauce.trim(),
+      toppings: ['pepperoni', 'sausage', 'onion', 'mushroom'].filter(topping => formValues[topping])
+    }
+    postPizza(morePizza)
+  }
+
   useEffect(() => {
-    formSchema.isValid(formValues).then(valid => setDisabled(!valid))
+    schema.isValid(formValues).then(valid => setDisabled(!valid))
   }, [formValues])
 
 

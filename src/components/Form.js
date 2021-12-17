@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Form = (props) => {
+const PizzaForm = (props) => {
     const { values, submit, change, errors, disabled } = props;
 
     const onSubmit = evt => {
@@ -15,21 +15,21 @@ const Form = (props) => {
     }
 
     return (
-        <form className='pizza-form' onSubmit={onSubmit}>
+        <form id='pizza-form' onSubmit={onSubmit}>
             <div className='pizza-form-submit'>
                 <h2>Build your pizza!</h2>
                 <button disabled={disabled}>submit</button>
 
                 <div className='errors'>
-                    <div>{errors.name}</div>
-                    <div>{errors.size}</div>
+                    {/* <div>{errors.name}</div> */}
+                    {/* <div>{errors.size}</div> */}
                 </div>
             </div>
 
             <div className='form-group-inputs'>
                 <h4>Please enter your name and pizza order</h4>
 
-                <label> Name
+                <label id='name-input'> Name
                     <input 
                         value={values.name}
                         onChange={onChange}
@@ -38,7 +38,7 @@ const Form = (props) => {
                     />
                 </label>
 
-                <label> Size 
+                <label id='size-dropdown'> Size 
                     <select
                     value={values.size}
                     onChange={onChange}
@@ -88,13 +88,13 @@ const Form = (props) => {
 
                 <br />
 
-                <label> Special Instructions
+                <label id='special-text'> Special Instructions
                     <input 
                         name='instructions' type='textbox' onChange={onChange} value={values.instructions}
                     />
                 </label>
 
-                <button id='submit' disabled={disabled}>Submit Order</button>
+                <button id='order' disabled={disabled}>Submit Order</button>
 
             </div>    
         </div>
@@ -102,4 +102,4 @@ const Form = (props) => {
     )
 }
 
-export default Form;
+export default PizzaForm;
