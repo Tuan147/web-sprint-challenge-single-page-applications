@@ -71,7 +71,7 @@ const App = () => {
     const morePizza = {
       name: formValues.name.trim(),
       size: formValues.size.trim(),
-      sauce: formValues.sauce.trim(),
+      sauce: formValues.sauce,
       toppings: ['pepperoni', 'sausage', 'onion', 'mushroom'].filter(topping => formValues[topping])
     }
     postPizza(morePizza)
@@ -88,7 +88,7 @@ const App = () => {
       <h1>Tuan's Pizzeria</h1>
       <Switch>
         <Route path="/pizza">
-          <Nav />
+          <Nav/>
             <PizzaForm values ={formValues} change={onChange} submit={onSubmit} error={formErrors} disabled={disabled} />
         </Route>
         <Route path="/">

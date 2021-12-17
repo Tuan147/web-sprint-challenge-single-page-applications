@@ -1,7 +1,7 @@
 import React from 'react';
 
 const PizzaForm = (props) => {
-    const { values, submit, change, errors, disabled } = props;
+    const { values, submit, change, error, disabled } = props;
 
     const onSubmit = evt => {
         evt.preventDefault();
@@ -21,8 +21,8 @@ const PizzaForm = (props) => {
                 <button disabled={disabled}>submit</button>
 
                 <div className='errors'>
-                    {/* <div>{errors.name}</div> */}
-                    {/* <div>{errors.size}</div> */}
+                    <div>{error.name}</div>
+                    <div>{error.size}</div>
                 </div>
             </div>
 
